@@ -14,14 +14,19 @@ while True:
         if sock == server_socket:
             connect, addr = server_socket.accept()
             socket_list.append(connect)
-            connect.send("You are connected from:" + str(addr))
+            send_msg = "You are connected from:" + str(addr)
+            send_msg_bytes = send_msg.encode('utf-8')
+            connect.send(send_msg_bytes)
+
         else:
             try:
                 data = sock.recv(2048)
                 if data.startswith("#"):
                     users[data[1:].lower()]=connect
-                    print "User " + data[1:] +" added."
-                    connect.send("Your user detail saved as : "+str(data[1:]))
+                    print ("User " + data[1:] +" added.")
+                    send_msg = "Your user detail saved as : "+str(data[1:])
+                    send_msg_bytes = send_msg.encode('utf-8')
+                    connect.send(send_msg_bytes)
                 elif data.startswith("@"):
                     users[data[1:data.index(':')].lower()].send(data[data.index(':')+1:])
             except:
