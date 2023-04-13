@@ -7,9 +7,9 @@
 
 ## How to run
 
-1. Run the sender and receiver program in any order
-   python3 sender.py
-   python3 receiver.py
+1. Run the sender and receiver program in any order:
+   `python3 sender.py`
+   `python3 receiver.py`
 
 2. Enter the number of bits of the key {n} in the sender program.
 3. Enter the number of bits of the key {n} in the receiver program.
